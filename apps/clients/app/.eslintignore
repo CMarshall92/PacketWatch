@@ -1,14 +1,14 @@
 # Build outputs
 .next/
-dist/
+dist
 build/
 out/
 
 # Dependencies
-node_modules/
+node_modules
 
 # Turbo
-.turbo/
+.turbo
 
 # Generated files
 *.d.ts

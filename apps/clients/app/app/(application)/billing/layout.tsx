@@ -8,7 +8,7 @@ import { SideNavigation } from "@/shared/components/custom/SideNavigation";
 export const metadata: Metadata = {
   title: "PacketWatch - Billing",
   description: "",
-};
+}
 
 export default async function Layout({
   children,
