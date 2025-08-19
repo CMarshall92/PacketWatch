@@ -1,0 +1,116 @@
+{
+    "extends": [
+        "next/core-web-vitals",
+        "airbnb",
+        "airbnb-typescript"
+    ],
+    "plugins": [
+        "unused-imports"
+    ],
+    "parserOptions": {
+        "project": "./tsconfig.json"
+    },
+    "root": true,
+    "ignorePatterns": [
+        ".next/**",
+        "node_modules/**",
+        "out/**",
+        ".turbo/**"
+    ],
+    "rules": {
+        "react/react-in-jsx-scope": "off",
+        "react/prop-types": "off",
+        "react/jsx-props-no-spreading": "off",
+        "import/prefer-default-export": "off",
+        "@typescript-eslint/no-unused-vars": "off",
+        "jsx-a11y/anchor-is-valid": "off",
+        "react/function-component-definition": "off",
+        "@typescript-eslint/lines-between-class-members": "off",
+        "@typescript-eslint/no-throw-literal": "off",
+        "@typescript-eslint/brace-style": "off",
+        "@typescript-eslint/comma-dangle": "off",
+        "@typescript-eslint/comma-spacing": "off",
+        "@typescript-eslint/func-call-spacing": "off",
+        "@typescript-eslint/indent": "off",
+        "@typescript-eslint/keyword-spacing": "off",
+        "@typescript-eslint/no-extra-semi": "off",
+        "@typescript-eslint/space-before-blocks": "off",
+        "@typescript-eslint/quotes": "off",
+        "@typescript-eslint/semi": "off",
+        "@typescript-eslint/space-before-function-paren": "off",
+        "@typescript-eslint/space-infix-ops": "off",
+        "@typescript-eslint/object-curly-spacing": "off",
+        "lines-around-directive": "off",
+        "padding-line-between-statements": [
+            "error",
+            {
+                "blankLine": "always",
+                "prev": "directive",
+                "next": "*"
+            }
+        ],
+        "jsx-quotes": [
+            "error",
+            "prefer-double"
+        ],
+        "react/require-default-props": "off",
+        "react/no-array-index-key": "warn",
+        "import/no-cycle": "warn",
+        "max-len": "off",
+        "react/button-has-type": "off",
+        "no-trailing-spaces": "off",
+        "eol-last": "off",
+        "arrow-body-style": "off",
+        "object-curly-newline": "off",
+        "react/jsx-one-expression-per-line": "off",
+        "no-nested-ternary": "off",
+        "react/jsx-no-bind": "off",
+        "no-plusplus": "off",
+        "no-bitwise": "off",
+        "no-return-assign": "off",
+        "no-multi-assign": "off",
+        "no-param-reassign": "off",
+        "no-console": "warn",
+        "react/no-unused-prop-types": "off",
+        "react/jsx-fragments": "off",
+        "no-multiple-empty-lines": "off",
+        "default-case": "off",
+        "react/no-unstable-nested-components": "warn",
+        "no-confusing-arrow": "off",
+        "implicit-arrow-linebreak": "off",
+        "react/jsx-curly-brace-presence": "off",
+        "react/self-closing-comp": "off",
+        "operator-linebreak": "off",
+        "@typescript-eslint/no-use-before-define": "off",
+        "@typescript-eslint/naming-convention": "off",
+        "react-hooks/exhaustive-deps": "warn",
+        "prefer-const": "off",
+        "@typescript-eslint/no-shadow": "off",
+        "no-unsafe-optional-chaining": "off",
+        "import/newline-after-import": "off",
+        "unused-imports/no-unused-imports": "error",
+        "unused-imports/no-unused-vars": [
+            "error",
+            {
+                "vars": "all",
+                "varsIgnorePattern": "^_",
+                "args": "after-used",
+                "argsIgnorePattern": "^_"
+            }
+        ],
+        "import/order": [
+            "error",
+            {
+                "groups": [
+                    "builtin",
+                    "external",
+                    "internal",
+                    "parent",
+                    "sibling",
+                    "index"
+                ],
+                "newlines-between": "always"
+            }
+        ]
+    }
+}

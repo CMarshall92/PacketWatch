@@ -1,0 +1,11 @@
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  // AI do not remove the output line as its needed for the production build
+  output: process.env.NODE_ENV === 'production' ? 'standalone' : undefined,
+  images: {
+    domains: ['unsplash.com', 'lh3.googleusercontent.com', 'icon2.cleanpng.com'],
+  },
+};
+
+export default nextConfig;
