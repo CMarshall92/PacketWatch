@@ -1,0 +1,14 @@
+# Build outputs
+.next/
+dist/
+build/
+out/
+
+# Dependencies
+node_modules/
+
+# Turbo
+.turbo/
+
+# Generated files
+*.d.ts

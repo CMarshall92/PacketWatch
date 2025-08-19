@@ -1,0 +1,18 @@
+# Build outputs
+**/dist/
+**/.next/
+**/build/
+**/out/
+
+# Dependencies
+**/node_modules/
+
+# Turbo
+**/.turbo/
+
+# Generated files
+**/*.d.ts
+**/generated/
+
+# Database generated files
+packages/database/src/generated/

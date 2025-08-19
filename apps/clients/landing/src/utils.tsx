@@ -1,33 +1,30 @@
-import {
-    FaFacebook, FaGithub, FaInstagram, FaLinkedin, FaThreads, FaTwitter, FaXTwitter, FaYoutube
-} from "react-icons/fa6";
 import { ReactElement } from "react";
 
 export const getPlatformIconByName = (platformName: string): ReactElement | null => {
     switch (platformName) {
         case 'facebook': {
-            return <FaFacebook size={24} className="min-w-fit" /> as ReactElement;
+            return <span className="min-w-fit w-6 h-6 text-2xl">📘</span>;
         }
         case 'github': {
-            return <FaGithub size={24} className="min-w-fit" /> as ReactElement;
+            return <span className="min-w-fit w-6 h-6 text-2xl">🐙</span>;
         }
         case 'instagram': {
-            return <FaInstagram size={24} className="min-w-fit" /> as ReactElement;
+            return <span className="min-w-fit w-6 h-6 text-2xl">📷</span>;
         }
         case 'linkedin': {
-            return <FaLinkedin size={24} className="min-w-fit" /> as ReactElement;
+            return <span className="min-w-fit w-6 h-6 text-2xl">💼</span>;
         }
         case 'threads': {
-            return <FaThreads size={24} className="min-w-fit" /> as ReactElement;
+            return <span className="min-w-fit w-6 h-6 text-2xl">🧵</span>;
         }
         case 'twitter': {
-            return <FaTwitter size={24} className="min-w-fit" /> as ReactElement;
+            return <span className="min-w-fit w-6 h-6 text-2xl">🐦</span>;
         }
         case 'youtube': {
-            return <FaYoutube size={24} className="min-w-fit" /> as ReactElement;
+            return <span className="min-w-fit w-6 h-6 text-2xl">📺</span>;
         }
         case 'x': {
-            return <FaXTwitter size={24} className="min-w-fit" /> as ReactElement;
+            return <span className="min-w-fit w-6 h-6 text-2xl">❌</span>;
         }
         default:
             // eslint-disable-next-line no-console

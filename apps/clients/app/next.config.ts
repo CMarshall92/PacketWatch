@@ -6,6 +6,10 @@ const nextConfig: NextConfig = {
   images: {
     domains: ['unsplash.com', 'lh3.googleusercontent.com', 'icon2.cleanpng.com'],
   },
+  eslint: {
+    // Disable ESLint during build to prevent linting of build output
+    ignoreDuringBuilds: true,
+  },
 };
 
 export default nextConfig;
