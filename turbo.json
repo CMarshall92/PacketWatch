@@ -22,7 +22,6 @@
     },
     "prisma:generate": {
       "outputs": [
-        "./apps/services/api/src/generated/prisma/**",
         "./packages/database/src/generated/**"
       ],
       "cache": false

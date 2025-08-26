@@ -6,6 +6,7 @@ import * as SeparatorPrimitive from "@radix-ui/react-separator"
 import { cn } from "@/shared/lib/utils/client"
 
 function Separator({
+  // eslint-ignore-next-line
   className,
   orientation = "horizontal",
   decorative = true,
