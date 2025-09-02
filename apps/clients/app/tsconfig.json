@@ -1,6 +1,7 @@
 {
   "extends": "@packetwatch/typescript-config/nextjs.json",
   "compilerOptions": {
+    "skipLibCheck": true,
     "paths": {
       "@/shared/*": [
         "./app/_shared/*"

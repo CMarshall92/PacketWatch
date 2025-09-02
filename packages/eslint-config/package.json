@@ -8,6 +8,9 @@
     "react-internal.js",
     "server.js"
   ],
+  "scripts": {
+    "build": ""
+  },
   "devDependencies": {
     "@vercel/style-guide": "^5.2.0",
     "eslint-config-turbo": "^2.0.0",

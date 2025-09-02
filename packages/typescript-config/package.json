@@ -8,6 +8,9 @@
     "nextjs.json",
     "react-library.json"
   ],
+  "scripts": {
+    "build": ""
+  },
   "publishConfig": {
     "access": "public"
   }

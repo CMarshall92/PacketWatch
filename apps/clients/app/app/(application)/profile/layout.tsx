@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import { Separator } from "@radix-ui/react-separator";
 
-import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/shared/components/ui/sidebar"
-import { NavigationUserDropdown } from "@/shared/components/custom/UserDropdown";
+import { SidebarInset, SidebarProvider } from "@/shared/components/ui/sidebar"
 import { SideNavigation } from "@/shared/components/custom/SideNavigation";
+import { PageHeader } from "@/shared/components/custom/PageHeader";
 
 export const metadata: Metadata = {
   title: "PacketWatch - Profile",
@@ -25,12 +24,7 @@ export default async function Layout({
     <SidebarProvider>
       <SideNavigation sections={sections} />
       <SidebarInset>
-        <header className="flex h-14 items-center gap-2 border-b px-4">
-          <SidebarTrigger />
-          <Separator orientation="vertical" className="mx-1 h-6" />
-          <h1 className="text-sm font-medium">Profile</h1>
-          <NavigationUserDropdown />
-        </header>
+        <PageHeader title="Profile" />
   
         <main className="flex-1 p-4 md:p-6 lg:p-8 scroll-smooth space-y-6">
           {children}
