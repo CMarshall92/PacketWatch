@@ -3,18 +3,12 @@
  * These functions run in the browser and are optimized for client-side usage
  */
 
-import type { NetworkResponse } from '@packetwatch/shared-types';
-
-export interface ClientFetcherOptions {
-  method?: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
-  headers?: Record<string, string>;
-  body?: any;
-  signal?: AbortSignal;
-}
+import type { ClientFetcherOptions, NetworkResponse } from '@packetwatch/shared-types';
 
 export async function fetcher<T = any>(
   url: string,
-  options: ClientFetcherOptions = {}
+  options: ClientFetcherOptions = {},
+  successCallback?: () => void
 ): Promise<NetworkResponse<T>> {
   const { method = 'GET', headers = {}, body, signal } = options;
 
@@ -34,14 +28,18 @@ export async function fetcher<T = any>(
   const response = await fetch(url, config);
 
   if (!response.ok) {
-    throw new Error(`HTTP error! status: ${response.status}`);
+    return {
+      status: 500,
+      message: response.statusText
+    } as NetworkResponse<T>;
   }
 
   const data = await response.json();
   
+  if (successCallback) successCallback()
+  
   return {
     status: response.status,
     data,
-    message: response.statusText
-  };
+  } as NetworkResponse<T>;
 }

@@ -3,18 +3,12 @@
  * These functions run on the server and can access server-only APIs
  */
 
-import type { NetworkResponse } from '@packetwatch/shared-types';
-
-export interface ServerFetcherOptions {
-  method?: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
-  headers?: Record<string, string>;
-  body?: any;
-  cache?: RequestCache;
-}
+import type { NetworkResponse, ServerFetcherOptions } from '@packetwatch/shared-types';
 
 export async function fetcher<T = any>(
   url: string,
-  options: ServerFetcherOptions = {}
+  options: ServerFetcherOptions = {},
+  successCallback?: () => void
 ): Promise<NetworkResponse<T>> {
   const { method = 'GET', headers = {}, body, cache = 'default' } = options;
 
@@ -33,15 +27,19 @@ export async function fetcher<T = any>(
 
   const response = await fetch(url, config);
 
-  if (!response.ok) {
-    throw new Error(`HTTP error! status: ${response.status}`);
+ if (!response.ok) {
+    return {
+      status: 500,
+      message: response.statusText
+    } as NetworkResponse<T>;
   }
 
   const data = await response.json();
+
+  if (successCallback) successCallback()
   
   return {
     status: response.status,
     data,
-    message: response.statusText
-  };
+  } as NetworkResponse<T>;
 }

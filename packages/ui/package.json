@@ -10,12 +10,12 @@
       "import": "./dist/index.js"
     },
     "./server": {
-      "types": "./dist/server/utils/networking.d.ts",
-      "import": "./dist/server/utils/networking.js"
+      "types": "./dist/server.d.ts",
+      "import": "./dist/server.js"
     },
     "./client": {
-      "types": "./dist/client/utils/networking.d.ts",
-      "import": "./dist/client/utils/networking.js"
+      "types": "./dist/client.d.ts",
+      "import": "./dist/client.js"
     }
   },
   "files": [

@@ -1,0 +1,1 @@
+export { fetcher as clientFetcher } from "./client/utils/networking";

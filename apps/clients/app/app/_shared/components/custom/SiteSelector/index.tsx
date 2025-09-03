@@ -3,7 +3,7 @@
 import React, { useState } from "react"
 import Image from 'next/image'
 import { ChevronDown, ChevronsLeftRightEllipsis, Network, Plus, X } from "lucide-react"
-
+import { clientFetcher } from '@packetwatch/ui/client';
 import { SiteLocation, SiteLocationResponse } from "@/shared/types/navigation"
 
 import { Button } from "../../ui/button"
@@ -36,24 +36,21 @@ export const SiteSelector = ({ locations }: { locations: SiteLocationResponse })
   }
   
   const handleCreate = async () => {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASEURL}/monitor`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
+    const response = await clientFetcher(
+      `${process.env.NEXT_PUBLIC_API_BASEURL}/monitor`,
+      {
+        method: 'POST',
+        body: {
+          serviceUrl: getDomainWithProtocol(serviceUrl),
+          ...isApi ? { endpoints: endpoints.filter(Boolean) } : {},
+          isApi,
+        },
       },
-      body: JSON.stringify({
-        serviceUrl: getDomainWithProtocol(serviceUrl),
-        ...isApi ? { endpoints: endpoints.filter(Boolean) } : {},
-        isApi,
-      }),
-    });
-
-    if (!response.ok) {
-      throw new Error(`Failed to create user: ${response.statusText}`);
-    }
-
-    setCreateOpen(false)
-    resetForm()
+      () => {
+        setCreateOpen(false)
+        resetForm()
+      }
+    )
   }
 
   const selectedSite = locations.data.find(

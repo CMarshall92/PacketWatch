@@ -51,10 +51,13 @@ console.log(response.message); // "OK"
 
 ```typescript
 // Server-side only
-import { fetcher } from '@packetwatch/ui/server';
+import { serverFetcher, ServerFetcherOptions } from '@packetwatch/ui/server';
 
 // Client-side only  
-import { fetcher } from '@packetwatch/ui/client';
+import { clientFetcher, ClientFetcherOptions } from '@packetwatch/ui/client';
+
+// Import types
+import type { NetworkResponse } from '@packetwatch/ui';
 ```
 
 ## API
