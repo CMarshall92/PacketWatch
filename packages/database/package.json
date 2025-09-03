@@ -20,16 +20,15 @@
     "clean": "rm -rf dist",
     "prisma:generate": "npx prisma generate",
     "prisma:migrate": "npx prisma migrate dev",
-    "prisma:studio": "npx prisma studio",
-    "postinstall": "npm run prisma:generate"
+    "prisma:studio": "npx prisma studio"
   },
   "dependencies": {
-    "@prisma/client": "^6.14.0"
+    "@prisma/client": "5.22.0"
   },
   "devDependencies": {
     "@packetwatch/typescript-config": "*",
     "@types/node": "^24.2.0",
-    "prisma": "^6.14.0",
+    "prisma": "5.22.0",
     "typescript": "^5.9.2"
   }
 }

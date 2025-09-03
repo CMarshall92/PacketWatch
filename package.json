@@ -9,8 +9,7 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "lint": "turbo run lint",
     "test": "turbo run test",
-    "prisma:generate": "turbo run prisma:generate",
-    "postinstall": "npm run prisma:generate"
+    "prisma:generate": "turbo run prisma:generate"
   },
   "dependencies": {},
   "devDependencies": {
