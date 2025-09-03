@@ -4,7 +4,7 @@ import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/shared/componen
 import { NavigationUserDropdown } from "@/shared/components/custom/UserDropdown";
 import { SideNavigation } from "@/shared/components/custom/SideNavigation";
 import { SiteSelector } from "@/shared/components/custom/SiteSelector";
-import { SiteLocationResponse } from "@/shared/types/navigation";
+import { SiteLocationResponse } from "@packetwatch/shared-types";
 import { OnboardingSteps } from "@/shared/components/custom/OnboardingSteps";
 
 export const metadata: Metadata = {

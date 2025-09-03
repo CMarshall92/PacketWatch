@@ -1,0 +1,26 @@
+{
+  "name": "@packetwatch/shared-types",
+  "version": "0.0.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "src/index.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist/**/*"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "clean": "rm -rf dist"
+  },
+  "devDependencies": {
+    "@packetwatch/typescript-config": "*",
+    "@types/node": "^24.2.0",
+    "typescript": "^5.9.2"
+  }
+}
