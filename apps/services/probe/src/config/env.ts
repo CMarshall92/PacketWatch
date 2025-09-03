@@ -11,8 +11,7 @@ const envSchema = zod.object({
     .default(3000),
   HOST: zod.string(),
   LOG_LEVEL: zod.enum(['fatal', 'error', 'warn', 'info', 'debug', 'trace']),
-  // DATABASE_URL: z.string().url(),
-  // JWT_SECRET: z.string().min(32),
+  // Note: DATABASE_URL is now handled by the @packetwatch/database package
 });
 
 const parseEnv = () => {

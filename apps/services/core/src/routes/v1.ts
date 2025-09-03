@@ -16,9 +16,15 @@ export async function v1Routes(fastify: FastifyInstance) {
   });
 
   fastify.post('/monitor', async (request) => {
-    const data = request.body;
-    // const monitor = await db.activeMonitor.create(data)
-    // console.log(monitor)
+    const data: any = request.body;
+    const monitor = await db.activeMonitor.create({
+      data: {
+        serviceUrl: data.serviceUrl,
+        isApi: data.isApi,
+        endpoints: data.endpoints,
+      }
+    })
+    console.log(monitor)
     return { status: 200 };
   });
 }
