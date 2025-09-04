@@ -43,9 +43,11 @@
   "dependencies": {
     "@fastify/cors": "^11.1.0",
     "@packetwatch/database": "*",
+    "@packetwatch/shared-types": "*",
     "dotenv": "^17.2.1",
     "fastify": "^5.4.0",
     "fastify-plugin": "^5.0.1",
+    "uuid": "^11.1.0",
     "zod": "^4.0.15"
   }
 }

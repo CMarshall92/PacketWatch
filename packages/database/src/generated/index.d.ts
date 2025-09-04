@@ -865,21 +865,27 @@ export namespace Prisma {
 
   export type ActiveMonitorMinAggregateOutputType = {
     id: number | null
+    slug: string | null
     userId: string | null
+    icon: string | null
     serviceUrl: string | null
     isApi: boolean | null
   }
 
   export type ActiveMonitorMaxAggregateOutputType = {
     id: number | null
+    slug: string | null
     userId: string | null
+    icon: string | null
     serviceUrl: string | null
     isApi: boolean | null
   }
 
   export type ActiveMonitorCountAggregateOutputType = {
     id: number
+    slug: number
     userId: number
+    icon: number
     serviceUrl: number
     isApi: number
     endpoints: number
@@ -897,21 +903,27 @@ export namespace Prisma {
 
   export type ActiveMonitorMinAggregateInputType = {
     id?: true
+    slug?: true
     userId?: true
+    icon?: true
     serviceUrl?: true
     isApi?: true
   }
 
   export type ActiveMonitorMaxAggregateInputType = {
     id?: true
+    slug?: true
     userId?: true
+    icon?: true
     serviceUrl?: true
     isApi?: true
   }
 
   export type ActiveMonitorCountAggregateInputType = {
     id?: true
+    slug?: true
     userId?: true
+    icon?: true
     serviceUrl?: true
     isApi?: true
     endpoints?: true
@@ -1006,7 +1018,9 @@ export namespace Prisma {
 
   export type ActiveMonitorGroupByOutputType = {
     id: number
+    slug: string
     userId: string
+    icon: string | null
     serviceUrl: string
     isApi: boolean
     endpoints: string[]
@@ -1033,7 +1047,9 @@ export namespace Prisma {
 
   export type ActiveMonitorSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    slug?: boolean
     userId?: boolean
+    icon?: boolean
     serviceUrl?: boolean
     isApi?: boolean
     endpoints?: boolean
@@ -1041,7 +1057,9 @@ export namespace Prisma {
 
   export type ActiveMonitorSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    slug?: boolean
     userId?: boolean
+    icon?: boolean
     serviceUrl?: boolean
     isApi?: boolean
     endpoints?: boolean
@@ -1049,7 +1067,9 @@ export namespace Prisma {
 
   export type ActiveMonitorSelectScalar = {
     id?: boolean
+    slug?: boolean
     userId?: boolean
+    icon?: boolean
     serviceUrl?: boolean
     isApi?: boolean
     endpoints?: boolean
@@ -1061,7 +1081,9 @@ export namespace Prisma {
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: number
+      slug: string
       userId: string
+      icon: string | null
       serviceUrl: string
       isApi: boolean
       endpoints: string[]
@@ -1459,7 +1481,9 @@ export namespace Prisma {
    */ 
   interface ActiveMonitorFieldRefs {
     readonly id: FieldRef<"ActiveMonitor", 'Int'>
+    readonly slug: FieldRef<"ActiveMonitor", 'String'>
     readonly userId: FieldRef<"ActiveMonitor", 'String'>
+    readonly icon: FieldRef<"ActiveMonitor", 'String'>
     readonly serviceUrl: FieldRef<"ActiveMonitor", 'String'>
     readonly isApi: FieldRef<"ActiveMonitor", 'Boolean'>
     readonly endpoints: FieldRef<"ActiveMonitor", 'String[]'>
@@ -1767,7 +1791,9 @@ export namespace Prisma {
 
   export const ActiveMonitorScalarFieldEnum: {
     id: 'id',
+    slug: 'slug',
     userId: 'userId',
+    icon: 'icon',
     serviceUrl: 'serviceUrl',
     isApi: 'isApi',
     endpoints: 'endpoints'
@@ -1790,6 +1816,14 @@ export namespace Prisma {
   };
 
   export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+  export const NullsOrder: {
+    first: 'first',
+    last: 'last'
+  };
+
+  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
   /**
@@ -1854,7 +1888,9 @@ export namespace Prisma {
     OR?: ActiveMonitorWhereInput[]
     NOT?: ActiveMonitorWhereInput | ActiveMonitorWhereInput[]
     id?: IntFilter<"ActiveMonitor"> | number
+    slug?: StringFilter<"ActiveMonitor"> | string
     userId?: StringFilter<"ActiveMonitor"> | string
+    icon?: StringNullableFilter<"ActiveMonitor"> | string | null
     serviceUrl?: StringFilter<"ActiveMonitor"> | string
     isApi?: BoolFilter<"ActiveMonitor"> | boolean
     endpoints?: StringNullableListFilter<"ActiveMonitor">
@@ -1862,7 +1898,9 @@ export namespace Prisma {
 
   export type ActiveMonitorOrderByWithRelationInput = {
     id?: SortOrder
+    slug?: SortOrder
     userId?: SortOrder
+    icon?: SortOrderInput | SortOrder
     serviceUrl?: SortOrder
     isApi?: SortOrder
     endpoints?: SortOrder
@@ -1870,18 +1908,22 @@ export namespace Prisma {
 
   export type ActiveMonitorWhereUniqueInput = Prisma.AtLeast<{
     id?: number
+    slug?: string
     AND?: ActiveMonitorWhereInput | ActiveMonitorWhereInput[]
     OR?: ActiveMonitorWhereInput[]
     NOT?: ActiveMonitorWhereInput | ActiveMonitorWhereInput[]
     userId?: StringFilter<"ActiveMonitor"> | string
+    icon?: StringNullableFilter<"ActiveMonitor"> | string | null
     serviceUrl?: StringFilter<"ActiveMonitor"> | string
     isApi?: BoolFilter<"ActiveMonitor"> | boolean
     endpoints?: StringNullableListFilter<"ActiveMonitor">
-  }, "id">
+  }, "id" | "slug">
 
   export type ActiveMonitorOrderByWithAggregationInput = {
     id?: SortOrder
+    slug?: SortOrder
     userId?: SortOrder
+    icon?: SortOrderInput | SortOrder
     serviceUrl?: SortOrder
     isApi?: SortOrder
     endpoints?: SortOrder
@@ -1897,14 +1939,18 @@ export namespace Prisma {
     OR?: ActiveMonitorScalarWhereWithAggregatesInput[]
     NOT?: ActiveMonitorScalarWhereWithAggregatesInput | ActiveMonitorScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"ActiveMonitor"> | number
+    slug?: StringWithAggregatesFilter<"ActiveMonitor"> | string
     userId?: StringWithAggregatesFilter<"ActiveMonitor"> | string
+    icon?: StringNullableWithAggregatesFilter<"ActiveMonitor"> | string | null
     serviceUrl?: StringWithAggregatesFilter<"ActiveMonitor"> | string
     isApi?: BoolWithAggregatesFilter<"ActiveMonitor"> | boolean
     endpoints?: StringNullableListFilter<"ActiveMonitor">
   }
 
   export type ActiveMonitorCreateInput = {
+    slug?: string
     userId: string
+    icon?: string | null
     serviceUrl: string
     isApi: boolean
     endpoints?: ActiveMonitorCreateendpointsInput | string[]
@@ -1912,14 +1958,18 @@ export namespace Prisma {
 
   export type ActiveMonitorUncheckedCreateInput = {
     id?: number
+    slug?: string
     userId: string
+    icon?: string | null
     serviceUrl: string
     isApi: boolean
     endpoints?: ActiveMonitorCreateendpointsInput | string[]
   }
 
   export type ActiveMonitorUpdateInput = {
+    slug?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
     serviceUrl?: StringFieldUpdateOperationsInput | string
     isApi?: BoolFieldUpdateOperationsInput | boolean
     endpoints?: ActiveMonitorUpdateendpointsInput | string[]
@@ -1927,7 +1977,9 @@ export namespace Prisma {
 
   export type ActiveMonitorUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
+    slug?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
     serviceUrl?: StringFieldUpdateOperationsInput | string
     isApi?: BoolFieldUpdateOperationsInput | boolean
     endpoints?: ActiveMonitorUpdateendpointsInput | string[]
@@ -1935,14 +1987,18 @@ export namespace Prisma {
 
   export type ActiveMonitorCreateManyInput = {
     id?: number
+    slug?: string
     userId: string
+    icon?: string | null
     serviceUrl: string
     isApi: boolean
     endpoints?: ActiveMonitorCreateendpointsInput | string[]
   }
 
   export type ActiveMonitorUpdateManyMutationInput = {
+    slug?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
     serviceUrl?: StringFieldUpdateOperationsInput | string
     isApi?: BoolFieldUpdateOperationsInput | boolean
     endpoints?: ActiveMonitorUpdateendpointsInput | string[]
@@ -1950,7 +2006,9 @@ export namespace Prisma {
 
   export type ActiveMonitorUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
+    slug?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
     serviceUrl?: StringFieldUpdateOperationsInput | string
     isApi?: BoolFieldUpdateOperationsInput | boolean
     endpoints?: ActiveMonitorUpdateendpointsInput | string[]
@@ -1982,6 +2040,21 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type BoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
@@ -1995,9 +2068,16 @@ export namespace Prisma {
     isEmpty?: boolean
   }
 
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
+  }
+
   export type ActiveMonitorCountOrderByAggregateInput = {
     id?: SortOrder
+    slug?: SortOrder
     userId?: SortOrder
+    icon?: SortOrder
     serviceUrl?: SortOrder
     isApi?: SortOrder
     endpoints?: SortOrder
@@ -2009,14 +2089,18 @@ export namespace Prisma {
 
   export type ActiveMonitorMaxOrderByAggregateInput = {
     id?: SortOrder
+    slug?: SortOrder
     userId?: SortOrder
+    icon?: SortOrder
     serviceUrl?: SortOrder
     isApi?: SortOrder
   }
 
   export type ActiveMonitorMinOrderByAggregateInput = {
     id?: SortOrder
+    slug?: SortOrder
     userId?: SortOrder
+    icon?: SortOrder
     serviceUrl?: SortOrder
     isApi?: SortOrder
   }
@@ -2059,6 +2143,24 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
   export type BoolWithAggregatesFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
@@ -2073,6 +2175,10 @@ export namespace Prisma {
 
   export type StringFieldUpdateOperationsInput = {
     set?: string
+  }
+
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
   }
 
   export type BoolFieldUpdateOperationsInput = {
@@ -2115,6 +2221,20 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringFilter<$PrismaModel> | string
+  }
+
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
   export type NestedBoolFilter<$PrismaModel = never> = {
@@ -2164,6 +2284,34 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {

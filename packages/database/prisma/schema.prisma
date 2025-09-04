@@ -16,7 +16,10 @@ datasource db {
 
 model ActiveMonitor {
   id         Int      @id @default(autoincrement())
+  slug       String   @unique @default(uuid())
+  
   userId     String
+  icon       String?
   serviceUrl String
   isApi      Boolean
   endpoints  String[]

@@ -4,3 +4,7 @@ export interface CreateMonitor {
   isApi: boolean;
   endpoints?: string[];
 }
+
+export interface GetMonitors {
+  userId?: string;
+}

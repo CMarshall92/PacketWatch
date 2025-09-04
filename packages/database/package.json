@@ -25,6 +25,7 @@
     "prisma:generate": "npx prisma generate",
     "prisma:watch": "npx prisma generate --watch",
     "prisma:migrate": "npx prisma migrate dev",
+    "prisma:reset": "npx prisma migrate reset",
     "prisma:studio": "npx prisma studio"
   },
   "dependencies": {

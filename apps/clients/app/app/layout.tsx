@@ -5,6 +5,7 @@ import { Inter } from 'next/font/google'
 import SessionProvider from '@/shared/providers/SessionProvider'
 import { authOptions } from '@/shared/lib/auth'
 import './globals.css'
+import { ApplicationProvider } from './_shared/providers/ApplicationProvider'
 
 const geistSans = Inter({
 	variable: '--font-geist-sans',
@@ -26,7 +27,9 @@ export default async function RootLayout({
 	return (
 		<html lang="en">
 			<body className={`${geistSans.variable} antialiased`}>
-				<SessionProvider session={session}>{children}</SessionProvider>
+				<SessionProvider session={session}>
+					<ApplicationProvider session={session}>{children}</ApplicationProvider>
+				</SessionProvider>
 			</body>
 		</html>
 	)

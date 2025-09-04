@@ -32,19 +32,18 @@ import {
 	DropdownMenuTrigger,
 } from '../../ui/dropdown-menu'
 import { getDomainWithProtocol } from '../../../lib/utils/client'
-import { SiteLocation, SiteLocationResponse } from '@packetwatch/shared-types'
+import { SiteLocation } from '@packetwatch/shared-types'
 import { useSession } from 'next-auth/react'
+import { useSiteSelector } from '@/shared/stores/useSiteSelector'
 
-export const SiteSelector = ({
-	locations,
-}: {
-	locations: SiteLocationResponse
-}) => {
+export const SiteSelector = () => {
 	const { data: session } = useSession()
 	const [createOpen, setCreateOpen] = useState(false)
 	const [serviceUrl, setServiceUrl] = useState('')
 	const [isApi, setIsApi] = useState(false)
 	const [endpoints, setEndpoints] = useState<string[]>([])
+
+	const { locations, selected, addLocation } = useSiteSelector()
 
 	function addEndpoint() {
 		setEndpoints((prev) => ['', ...prev])
@@ -62,8 +61,7 @@ export const SiteSelector = ({
 	}
 
 	const handleCreate = async () => {
-		console.log(session?.user.id)
-		await clientFetcher(
+		const response = await clientFetcher(
 			`${process.env.NEXT_PUBLIC_API_BASEURL}/monitors/create`,
 			{
 				method: 'POST',
@@ -79,10 +77,12 @@ export const SiteSelector = ({
 				resetForm()
 			}
 		)
+
+		addLocation(response.data)
 	}
 
-	const selectedSite = locations.data.find(
-		(location: SiteLocation) => location.slug === locations.prevSelectedSlug
+	const selectedSite = locations?.find(
+		(location: SiteLocation) => location.slug === selected
 	)
 
 	return (
@@ -106,7 +106,7 @@ export const SiteSelector = ({
 					</Button>
 				</DropdownMenuTrigger>
 				<DropdownMenuContent align="start" className="w-56">
-					{locations.data.map((location: SiteLocation) => (
+					{locations.map((location: SiteLocation) => (
 						<DropdownMenuItem key={location.slug}>
 							<React.Fragment>
 								{location.isApi ? <Network /> : <ChevronsLeftRightEllipsis />}
@@ -115,7 +115,7 @@ export const SiteSelector = ({
 						</DropdownMenuItem>
 					))}
 
-					{locations.data.length !== 0 && <DropdownMenuSeparator />}
+					{locations.length !== 0 && <DropdownMenuSeparator />}
 
 					<DropdownMenuItem onSelect={() => setCreateOpen(true)}>
 						<Plus className="mr-2 h-4 w-4" />
