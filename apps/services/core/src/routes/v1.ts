@@ -15,8 +15,26 @@ export async function v1Routes(fastify: FastifyInstance) {
     }
   })
 
+  fastify.get('/monitors/all', async (request, reply) => {
+    const query = request.query as { userId?: string }
+
+    if (!query.userId) {
+      return reply.status(400).send({ error: 'userId is a required query parameter.' })
+    }
+
+    const response = await db.activeMonitor.findMany({
+      where: {
+        userId: query.userId,
+      },
+    })
+
+    console.log(response)
+    return { status: 200, data: response } // It's good practice to return the data
+  })
+
   fastify.post('/monitors/create', async (request) => {
-    const data: any = request.body
+    const data = request.body as CreateMonitor
+
     await db.activeMonitor.create({
       data: {
         userId: data.userId,
