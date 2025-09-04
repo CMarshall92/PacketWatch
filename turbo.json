@@ -11,47 +11,52 @@
   ],
   "tasks": {
     "build": {
-      "inputs": [
-        "$TURBO_DEFAULT$",
-        ".env*"
-      ],
-      "outputs": [
-        "dist/**",
-        ".next/**",
-        "!.next/cache/**",
-        "public/dist/**"
-      ],
-      "dependsOn": [
-        "^build",
-        "prisma:generate"
-      ],
-      "env": [
-        "NEXT_PUBLIC_API_HOST"
-      ]
+      "inputs": ["$TURBO_DEFAULT$", ".env*"],
+      "outputs": ["dist/**", ".next/**", "!.next/cache/**", "public/dist/**"],
+      "dependsOn": ["^build", "prisma:generate"],
+      "env": ["NEXT_PUBLIC_API_HOST"]
+    },
+    "prisma:clean": {
+      "outputs": [],
+      "cache": false
     },
     "prisma:generate": {
-      "outputs": [
-        "./packages/database/src/generated/**"
-      ],
+      "outputs": ["./packages/database/src/generated/**"],
+      "dependsOn": ["^prisma:clean"],
       "cache": false
     },
     "test": {
-      "outputs": [
-        "coverage/**"
-      ],
+      "outputs": ["coverage/**"],
       "dependsOn": []
     },
     "lint": {
-      "dependsOn": [
-        "^build"
-      ]
+      "dependsOn": ["^build"]
     },
     "dev": {
       "cache": false,
       "persistent": true,
-      "dependsOn": [
-        "^prisma:generate"
+      "dependsOn": ["^prisma:generate"],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "packages/database/prisma/**",
+        "packages/database/schema.prisma",
+        "packages/database/.env"
       ]
+    },
+    "dev:prisma": {
+      "cache": false,
+      "persistent": true,
+      "inputs": [
+        "packages/database/prisma/**",
+        "packages/database/schema.prisma"
+      ]
+    },
+    "copy:watch": {
+      "cache": false,
+      "persistent": true
+    },
+    "copy:generated": {
+      "cache": false
     },
     "clean": {
       "cache": false

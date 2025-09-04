@@ -15,20 +15,27 @@
     "prisma/**/*"
   ],
   "scripts": {
-    "build": "tsc && (cp -R src/generated dist/generated || true)",
-    "dev": "tsc --watch",
-    "clean": "rm -rf dist",
+    "build": "tsc && (cp -R src/generated dist/generated || true) && (cp -R prisma dist/prisma || true)",
+    "dev": "concurrently \"tsc --watch\" \"npm run prisma:watch\" \"npm run copy:watch\"",
+    "dev:prisma": "npm run prisma:watch",
+    "clean": "rm -rf dist src/generated",
+    "copy:watch": "chokidar \"src/generated/**/*\" -c \"npm run copy:generated\"",
+    "copy:generated": "rm -rf dist/generated && cp -R src/generated dist/generated || true",
+    "postinstall": "npm run prisma:generate",
     "prisma:generate": "npx prisma generate",
+    "prisma:watch": "npx prisma generate --watch",
     "prisma:migrate": "npx prisma migrate dev",
     "prisma:studio": "npx prisma studio"
   },
   "dependencies": {
-    "@prisma/client": "5.22.0"
+    "@prisma/client": "5.22.0",
+    "prisma": "5.22.0"
   },
   "devDependencies": {
     "@packetwatch/typescript-config": "*",
     "@types/node": "^24.2.0",
-    "prisma": "5.22.0",
+    "chokidar-cli": "^3.0.0",
+    "concurrently": "^9.1.0",
     "typescript": "^5.9.2"
   }
 }

@@ -15,16 +15,16 @@ export async function v1Routes(fastify: FastifyInstance) {
     }
   })
 
-  fastify.post('/monitor', async (request) => {
+  fastify.post('/monitors/create', async (request) => {
     const data: any = request.body
-    const monitor = await db.activeMonitor.create({
+    await db.activeMonitor.create({
       data: {
+        userId: data.userId,
         serviceUrl: data.serviceUrl,
         isApi: data.isApi,
-        endpoints: data.endpoints,
+        endpoints: data?.endpoints || [],
       },
     })
-    console.log(monitor)
     return { status: 200 }
   })
 }

@@ -34,6 +34,22 @@ export const authOptions: NextAuthOptions = {
 		}),
 	],
 	callbacks: {
+		async jwt({ token, user }) {
+			// The user object is only available on the first sign-in.
+			// After that, the token is passed between requests.
+			if (user) {
+				token.id = user.id
+			}
+			return token
+		},
+		async session({ session, token }) {
+			// Add the user ID from the token to the session object
+			if (session.user) {
+				session.user.id = token.id
+			}
+
+			return session
+		},
 		async redirect({ url, baseUrl }) {
 			// Always land users on the dashboard after auth unless an absolute URL was requested
 			if (url.startsWith('/')) return `${baseUrl}${url}`

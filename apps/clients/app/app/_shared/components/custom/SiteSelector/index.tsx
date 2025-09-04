@@ -33,12 +33,14 @@ import {
 } from '../../ui/dropdown-menu'
 import { getDomainWithProtocol } from '../../../lib/utils/client'
 import { SiteLocation, SiteLocationResponse } from '@packetwatch/shared-types'
+import { useSession } from 'next-auth/react'
 
 export const SiteSelector = ({
 	locations,
 }: {
 	locations: SiteLocationResponse
 }) => {
+	const { data: session } = useSession()
 	const [createOpen, setCreateOpen] = useState(false)
 	const [serviceUrl, setServiceUrl] = useState('')
 	const [isApi, setIsApi] = useState(false)
@@ -60,11 +62,13 @@ export const SiteSelector = ({
 	}
 
 	const handleCreate = async () => {
+		console.log(session?.user.id)
 		await clientFetcher(
-			`${process.env.NEXT_PUBLIC_API_BASEURL}/monitor`,
+			`${process.env.NEXT_PUBLIC_API_BASEURL}/monitors/create`,
 			{
 				method: 'POST',
 				body: {
+					userId: session?.user.id || null,
 					serviceUrl: getDomainWithProtocol(serviceUrl),
 					...(isApi ? { endpoints: endpoints.filter(Boolean) } : {}),
 					isApi,

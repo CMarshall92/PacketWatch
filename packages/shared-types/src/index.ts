@@ -1,2 +1,3 @@
-export * from "./siteLocation.js";
-export * from "./networking.js";
+export * from "./siteLocation";
+export * from "./networking";
+export * from "./next-auth";

@@ -16,7 +16,8 @@ datasource db {
 
 model ActiveMonitor {
   id         Int      @id @default(autoincrement())
+  userId     String
   serviceUrl String
-  isApi      Boolean  @default(true)
+  isApi      Boolean
   endpoints  String[]
 }

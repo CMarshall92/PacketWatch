@@ -18,8 +18,7 @@ export default async function AuthPage() {
 			process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET
 		),
 		github: Boolean(
-			(process.env.GITHUB_CLIENT_ID || process.env.GITHUB_ID) &&
-				(process.env.GITHUB_CLIENT_SECRET || process.env.GITHUB_SECRET)
+			process.env.GITHUB_CLIENT_ID && process.env.GITHUB_CLIENT_SECRET
 		),
 		discord: Boolean(
 			process.env.DISCORD_CLIENT_ID && process.env.DISCORD_CLIENT_SECRET
