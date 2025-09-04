@@ -34,6 +34,13 @@ module.exports = {
     { files: ["*.js?(x)", "*.ts?(x)"] },
     {
       files: ["*.ts", "*.tsx"],
+      parser: require.resolve("@typescript-eslint/parser"),
+      parserOptions: {
+        project,
+        ecmaVersion: "latest",
+        sourceType: "module",
+        ecmaFeatures: { jsx: true },
+      },
       rules: {
         "no-undef": "off",
       },
