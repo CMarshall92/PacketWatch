@@ -1,16 +1,11 @@
 {
-    "extends": "@packetwatch/typescript-config/base.json",
-    "compilerOptions": {
-        "outDir": "dist",
-        "rootDir": "src",
-        "declaration": true,
-        "declarationMap": true
-    },
-    "include": [
-        "src"
-    ],
-    "exclude": [
-        "node_modules",
-        "dist"
-    ]
+  "extends": "@packetwatch/typescript-config/base.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "rootDir": "src",
+    "declaration": true,
+    "declarationMap": true
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
 }

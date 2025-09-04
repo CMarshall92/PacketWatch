@@ -1,5 +1,5 @@
-import { FastifyInstance } from 'fastify';
-import fp from 'fastify-plugin';
+import { FastifyInstance } from 'fastify'
+import fp from 'fastify-plugin'
 
 async function notFoundHandler(fastify: FastifyInstance) {
   fastify.setNotFoundHandler((request, reply) => {
@@ -8,8 +8,8 @@ async function notFoundHandler(fastify: FastifyInstance) {
       message: `Route ${request.method}:${request.url} not found`,
       statusCode: 404,
       timestamp: new Date().toISOString(),
-    });
-  });
+    })
+  })
 }
 
-export default fp(notFoundHandler);
+export default fp(notFoundHandler)

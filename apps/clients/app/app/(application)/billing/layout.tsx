@@ -1,29 +1,29 @@
-import type { Metadata } from "next";
+import type { Metadata } from 'next'
 
-import { SidebarInset, SidebarProvider } from "@/shared/components/ui/sidebar"
-import { SideNavigation } from "@/shared/components/custom/SideNavigation";
-import { PageHeader } from "@/shared/components/custom/PageHeader";
+import { SidebarInset, SidebarProvider } from '@/shared/components/ui/sidebar'
+import { SideNavigation } from '@/shared/components/custom/SideNavigation'
+import { PageHeader } from '@/shared/components/custom/PageHeader'
 
 export const metadata: Metadata = {
-  title: "PacketWatch - Billing",
-  description: "",
+	title: 'PacketWatch - Billing',
+	description: '',
 }
 
 export default async function Layout({
-  children,
+	children,
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode
 }>) {
-  return (
-    <SidebarProvider>
-      <SideNavigation />
-      <SidebarInset>
-        <PageHeader title="Billing" />
-  
-        <main className="flex-1 p-4 md:p-6 lg:p-8 scroll-smooth space-y-6">
-          {children}
-        </main>
-      </SidebarInset>
-    </SidebarProvider>
-  );
+	return (
+		<SidebarProvider>
+			<SideNavigation />
+			<SidebarInset>
+				<PageHeader title="Billing" />
+
+				<main className="flex-1 p-4 md:p-6 lg:p-8 scroll-smooth space-y-6">
+					{children}
+				</main>
+			</SidebarInset>
+		</SidebarProvider>
+	)
 }

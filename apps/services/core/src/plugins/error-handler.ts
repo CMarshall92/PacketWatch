@@ -1,11 +1,11 @@
-import { FastifyInstance, FastifyError } from 'fastify';
-import fp from 'fastify-plugin';
+import { FastifyInstance, FastifyError } from 'fastify'
+import fp from 'fastify-plugin'
 
 async function errorHandler(fastify: FastifyInstance) {
   fastify.setErrorHandler((error: FastifyError, request, reply) => {
-    const { statusCode = 500, message } = error;
+    const { statusCode = 500, message } = error
 
-    fastify.log.error(error);
+    fastify.log.error(error)
 
     // Don't expose internal errors in production
     const response = {
@@ -15,10 +15,10 @@ async function errorHandler(fastify: FastifyInstance) {
           : message,
       statusCode,
       timestamp: new Date().toISOString(),
-    };
+    }
 
-    reply.status(statusCode).send(response);
-  });
+    reply.status(statusCode).send(response)
+  })
 }
 
-export default fp(errorHandler);
+export default fp(errorHandler)

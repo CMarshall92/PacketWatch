@@ -1,1 +1,1 @@
-export { db } from '@packetwatch/database';
+export { db } from '@packetwatch/database'
