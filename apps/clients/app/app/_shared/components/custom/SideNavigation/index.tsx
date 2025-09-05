@@ -19,6 +19,7 @@ import {
 } from '@/shared/components/ui/sidebar'
 import { useSidenav } from '@/shared/stores/useSidenav'
 import { useSiteSelector } from '@/shared/stores/useSiteSelector'
+import { SideNavigationSkeleton } from './SideNavigaionSkeleton'
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
 	Home,
@@ -38,6 +39,7 @@ interface SideNavItem {
 export const SideNavigation = () => {
 	const navOpen = useSidenav((state) => state.isOpen)
 	const locations = useSiteSelector((state) => state.locations)
+	const locationsHaveFetched = useSiteSelector((state) => state.isFetched)
 	const showNavOptions = locations.length > 0
 	const sections =
 		locations.length !== 0
@@ -108,7 +110,9 @@ export const SideNavigation = () => {
 				</SidebarMenu>
 			</SidebarHeader>
 
-			{showNavOptions && (
+			{!locationsHaveFetched && <SideNavigationSkeleton />}
+
+			{showNavOptions && locationsHaveFetched && (
 				<SidebarContent>
 					<SidebarGroup>
 						<SidebarGroupLabel>Dashboard</SidebarGroupLabel>

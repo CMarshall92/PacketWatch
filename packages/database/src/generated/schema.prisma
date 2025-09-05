@@ -15,12 +15,16 @@ datasource db {
 }
 
 model ActiveMonitor {
-  id   Int    @id @default(autoincrement())
-  slug String @unique @default(uuid())
-
+  id         Int      @id @default(autoincrement())
+  slug       String   @unique @default(uuid())
+  label      String?
   userId     String
   icon       String?
   serviceUrl String
   isApi      Boolean
   endpoints  String[]
+
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @default(now())
+  lastSelectedAt DateTime?
 }

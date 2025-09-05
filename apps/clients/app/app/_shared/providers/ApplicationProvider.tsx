@@ -25,12 +25,15 @@ export const ApplicationProvider = ({
 	children,
 	session,
 }: ApplicationProviderProps) => {
-	const { addLocations } = useSiteSelector()
+	const { addLocations, setSelectedLocation, toggleIsFetched } =
+		useSiteSelector()
 
 	useEffect(() => {
 		const fetch = async () => {
 			const locations = await fetchSiteLocations(session)
-			addLocations(locations?.data)
+			toggleIsFetched()
+			setSelectedLocation(locations?.selected)
+			addLocations(locations?.locations)
 		}
 		fetch()
 	}, [])

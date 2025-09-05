@@ -866,29 +866,41 @@ export namespace Prisma {
   export type ActiveMonitorMinAggregateOutputType = {
     id: number | null
     slug: string | null
+    label: string | null
     userId: string | null
     icon: string | null
     serviceUrl: string | null
     isApi: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    lastSelectedAt: Date | null
   }
 
   export type ActiveMonitorMaxAggregateOutputType = {
     id: number | null
     slug: string | null
+    label: string | null
     userId: string | null
     icon: string | null
     serviceUrl: string | null
     isApi: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    lastSelectedAt: Date | null
   }
 
   export type ActiveMonitorCountAggregateOutputType = {
     id: number
     slug: number
+    label: number
     userId: number
     icon: number
     serviceUrl: number
     isApi: number
     endpoints: number
+    createdAt: number
+    updatedAt: number
+    lastSelectedAt: number
     _all: number
   }
 
@@ -904,29 +916,41 @@ export namespace Prisma {
   export type ActiveMonitorMinAggregateInputType = {
     id?: true
     slug?: true
+    label?: true
     userId?: true
     icon?: true
     serviceUrl?: true
     isApi?: true
+    createdAt?: true
+    updatedAt?: true
+    lastSelectedAt?: true
   }
 
   export type ActiveMonitorMaxAggregateInputType = {
     id?: true
     slug?: true
+    label?: true
     userId?: true
     icon?: true
     serviceUrl?: true
     isApi?: true
+    createdAt?: true
+    updatedAt?: true
+    lastSelectedAt?: true
   }
 
   export type ActiveMonitorCountAggregateInputType = {
     id?: true
     slug?: true
+    label?: true
     userId?: true
     icon?: true
     serviceUrl?: true
     isApi?: true
     endpoints?: true
+    createdAt?: true
+    updatedAt?: true
+    lastSelectedAt?: true
     _all?: true
   }
 
@@ -1019,11 +1043,15 @@ export namespace Prisma {
   export type ActiveMonitorGroupByOutputType = {
     id: number
     slug: string
+    label: string | null
     userId: string
     icon: string | null
     serviceUrl: string
     isApi: boolean
     endpoints: string[]
+    createdAt: Date
+    updatedAt: Date
+    lastSelectedAt: Date | null
     _count: ActiveMonitorCountAggregateOutputType | null
     _avg: ActiveMonitorAvgAggregateOutputType | null
     _sum: ActiveMonitorSumAggregateOutputType | null
@@ -1048,31 +1076,43 @@ export namespace Prisma {
   export type ActiveMonitorSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     slug?: boolean
+    label?: boolean
     userId?: boolean
     icon?: boolean
     serviceUrl?: boolean
     isApi?: boolean
     endpoints?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    lastSelectedAt?: boolean
   }, ExtArgs["result"]["activeMonitor"]>
 
   export type ActiveMonitorSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     slug?: boolean
+    label?: boolean
     userId?: boolean
     icon?: boolean
     serviceUrl?: boolean
     isApi?: boolean
     endpoints?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    lastSelectedAt?: boolean
   }, ExtArgs["result"]["activeMonitor"]>
 
   export type ActiveMonitorSelectScalar = {
     id?: boolean
     slug?: boolean
+    label?: boolean
     userId?: boolean
     icon?: boolean
     serviceUrl?: boolean
     isApi?: boolean
     endpoints?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    lastSelectedAt?: boolean
   }
 
 
@@ -1082,11 +1122,15 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: number
       slug: string
+      label: string | null
       userId: string
       icon: string | null
       serviceUrl: string
       isApi: boolean
       endpoints: string[]
+      createdAt: Date
+      updatedAt: Date
+      lastSelectedAt: Date | null
     }, ExtArgs["result"]["activeMonitor"]>
     composites: {}
   }
@@ -1482,11 +1526,15 @@ export namespace Prisma {
   interface ActiveMonitorFieldRefs {
     readonly id: FieldRef<"ActiveMonitor", 'Int'>
     readonly slug: FieldRef<"ActiveMonitor", 'String'>
+    readonly label: FieldRef<"ActiveMonitor", 'String'>
     readonly userId: FieldRef<"ActiveMonitor", 'String'>
     readonly icon: FieldRef<"ActiveMonitor", 'String'>
     readonly serviceUrl: FieldRef<"ActiveMonitor", 'String'>
     readonly isApi: FieldRef<"ActiveMonitor", 'Boolean'>
     readonly endpoints: FieldRef<"ActiveMonitor", 'String[]'>
+    readonly createdAt: FieldRef<"ActiveMonitor", 'DateTime'>
+    readonly updatedAt: FieldRef<"ActiveMonitor", 'DateTime'>
+    readonly lastSelectedAt: FieldRef<"ActiveMonitor", 'DateTime'>
   }
     
 
@@ -1792,11 +1840,15 @@ export namespace Prisma {
   export const ActiveMonitorScalarFieldEnum: {
     id: 'id',
     slug: 'slug',
+    label: 'label',
     userId: 'userId',
     icon: 'icon',
     serviceUrl: 'serviceUrl',
     isApi: 'isApi',
-    endpoints: 'endpoints'
+    endpoints: 'endpoints',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    lastSelectedAt: 'lastSelectedAt'
   };
 
   export type ActiveMonitorScalarFieldEnum = (typeof ActiveMonitorScalarFieldEnum)[keyof typeof ActiveMonitorScalarFieldEnum]
@@ -1867,6 +1919,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'DateTime'
+   */
+  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+  /**
+   * Reference to a field of type 'DateTime[]'
+   */
+  export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -1889,21 +1955,29 @@ export namespace Prisma {
     NOT?: ActiveMonitorWhereInput | ActiveMonitorWhereInput[]
     id?: IntFilter<"ActiveMonitor"> | number
     slug?: StringFilter<"ActiveMonitor"> | string
+    label?: StringNullableFilter<"ActiveMonitor"> | string | null
     userId?: StringFilter<"ActiveMonitor"> | string
     icon?: StringNullableFilter<"ActiveMonitor"> | string | null
     serviceUrl?: StringFilter<"ActiveMonitor"> | string
     isApi?: BoolFilter<"ActiveMonitor"> | boolean
     endpoints?: StringNullableListFilter<"ActiveMonitor">
+    createdAt?: DateTimeFilter<"ActiveMonitor"> | Date | string
+    updatedAt?: DateTimeFilter<"ActiveMonitor"> | Date | string
+    lastSelectedAt?: DateTimeNullableFilter<"ActiveMonitor"> | Date | string | null
   }
 
   export type ActiveMonitorOrderByWithRelationInput = {
     id?: SortOrder
     slug?: SortOrder
+    label?: SortOrderInput | SortOrder
     userId?: SortOrder
     icon?: SortOrderInput | SortOrder
     serviceUrl?: SortOrder
     isApi?: SortOrder
     endpoints?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    lastSelectedAt?: SortOrderInput | SortOrder
   }
 
   export type ActiveMonitorWhereUniqueInput = Prisma.AtLeast<{
@@ -1912,21 +1986,29 @@ export namespace Prisma {
     AND?: ActiveMonitorWhereInput | ActiveMonitorWhereInput[]
     OR?: ActiveMonitorWhereInput[]
     NOT?: ActiveMonitorWhereInput | ActiveMonitorWhereInput[]
+    label?: StringNullableFilter<"ActiveMonitor"> | string | null
     userId?: StringFilter<"ActiveMonitor"> | string
     icon?: StringNullableFilter<"ActiveMonitor"> | string | null
     serviceUrl?: StringFilter<"ActiveMonitor"> | string
     isApi?: BoolFilter<"ActiveMonitor"> | boolean
     endpoints?: StringNullableListFilter<"ActiveMonitor">
+    createdAt?: DateTimeFilter<"ActiveMonitor"> | Date | string
+    updatedAt?: DateTimeFilter<"ActiveMonitor"> | Date | string
+    lastSelectedAt?: DateTimeNullableFilter<"ActiveMonitor"> | Date | string | null
   }, "id" | "slug">
 
   export type ActiveMonitorOrderByWithAggregationInput = {
     id?: SortOrder
     slug?: SortOrder
+    label?: SortOrderInput | SortOrder
     userId?: SortOrder
     icon?: SortOrderInput | SortOrder
     serviceUrl?: SortOrder
     isApi?: SortOrder
     endpoints?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    lastSelectedAt?: SortOrderInput | SortOrder
     _count?: ActiveMonitorCountOrderByAggregateInput
     _avg?: ActiveMonitorAvgOrderByAggregateInput
     _max?: ActiveMonitorMaxOrderByAggregateInput
@@ -1940,78 +2022,110 @@ export namespace Prisma {
     NOT?: ActiveMonitorScalarWhereWithAggregatesInput | ActiveMonitorScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"ActiveMonitor"> | number
     slug?: StringWithAggregatesFilter<"ActiveMonitor"> | string
+    label?: StringNullableWithAggregatesFilter<"ActiveMonitor"> | string | null
     userId?: StringWithAggregatesFilter<"ActiveMonitor"> | string
     icon?: StringNullableWithAggregatesFilter<"ActiveMonitor"> | string | null
     serviceUrl?: StringWithAggregatesFilter<"ActiveMonitor"> | string
     isApi?: BoolWithAggregatesFilter<"ActiveMonitor"> | boolean
     endpoints?: StringNullableListFilter<"ActiveMonitor">
+    createdAt?: DateTimeWithAggregatesFilter<"ActiveMonitor"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"ActiveMonitor"> | Date | string
+    lastSelectedAt?: DateTimeNullableWithAggregatesFilter<"ActiveMonitor"> | Date | string | null
   }
 
   export type ActiveMonitorCreateInput = {
     slug?: string
+    label?: string | null
     userId: string
     icon?: string | null
     serviceUrl: string
     isApi: boolean
     endpoints?: ActiveMonitorCreateendpointsInput | string[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    lastSelectedAt?: Date | string | null
   }
 
   export type ActiveMonitorUncheckedCreateInput = {
     id?: number
     slug?: string
+    label?: string | null
     userId: string
     icon?: string | null
     serviceUrl: string
     isApi: boolean
     endpoints?: ActiveMonitorCreateendpointsInput | string[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    lastSelectedAt?: Date | string | null
   }
 
   export type ActiveMonitorUpdateInput = {
     slug?: StringFieldUpdateOperationsInput | string
+    label?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: StringFieldUpdateOperationsInput | string
     icon?: NullableStringFieldUpdateOperationsInput | string | null
     serviceUrl?: StringFieldUpdateOperationsInput | string
     isApi?: BoolFieldUpdateOperationsInput | boolean
     endpoints?: ActiveMonitorUpdateendpointsInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    lastSelectedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type ActiveMonitorUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     slug?: StringFieldUpdateOperationsInput | string
+    label?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: StringFieldUpdateOperationsInput | string
     icon?: NullableStringFieldUpdateOperationsInput | string | null
     serviceUrl?: StringFieldUpdateOperationsInput | string
     isApi?: BoolFieldUpdateOperationsInput | boolean
     endpoints?: ActiveMonitorUpdateendpointsInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    lastSelectedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type ActiveMonitorCreateManyInput = {
     id?: number
     slug?: string
+    label?: string | null
     userId: string
     icon?: string | null
     serviceUrl: string
     isApi: boolean
     endpoints?: ActiveMonitorCreateendpointsInput | string[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    lastSelectedAt?: Date | string | null
   }
 
   export type ActiveMonitorUpdateManyMutationInput = {
     slug?: StringFieldUpdateOperationsInput | string
+    label?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: StringFieldUpdateOperationsInput | string
     icon?: NullableStringFieldUpdateOperationsInput | string | null
     serviceUrl?: StringFieldUpdateOperationsInput | string
     isApi?: BoolFieldUpdateOperationsInput | boolean
     endpoints?: ActiveMonitorUpdateendpointsInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    lastSelectedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type ActiveMonitorUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     slug?: StringFieldUpdateOperationsInput | string
+    label?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: StringFieldUpdateOperationsInput | string
     icon?: NullableStringFieldUpdateOperationsInput | string | null
     serviceUrl?: StringFieldUpdateOperationsInput | string
     isApi?: BoolFieldUpdateOperationsInput | boolean
     endpoints?: ActiveMonitorUpdateendpointsInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    lastSelectedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -2068,6 +2182,28 @@ export namespace Prisma {
     isEmpty?: boolean
   }
 
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -2076,11 +2212,15 @@ export namespace Prisma {
   export type ActiveMonitorCountOrderByAggregateInput = {
     id?: SortOrder
     slug?: SortOrder
+    label?: SortOrder
     userId?: SortOrder
     icon?: SortOrder
     serviceUrl?: SortOrder
     isApi?: SortOrder
     endpoints?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    lastSelectedAt?: SortOrder
   }
 
   export type ActiveMonitorAvgOrderByAggregateInput = {
@@ -2090,19 +2230,27 @@ export namespace Prisma {
   export type ActiveMonitorMaxOrderByAggregateInput = {
     id?: SortOrder
     slug?: SortOrder
+    label?: SortOrder
     userId?: SortOrder
     icon?: SortOrder
     serviceUrl?: SortOrder
     isApi?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    lastSelectedAt?: SortOrder
   }
 
   export type ActiveMonitorMinOrderByAggregateInput = {
     id?: SortOrder
     slug?: SortOrder
+    label?: SortOrder
     userId?: SortOrder
     icon?: SortOrder
     serviceUrl?: SortOrder
     isApi?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    lastSelectedAt?: SortOrder
   }
 
   export type ActiveMonitorSumOrderByAggregateInput = {
@@ -2169,6 +2317,34 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
   export type ActiveMonitorCreateendpointsInput = {
     set: string[]
   }
@@ -2188,6 +2364,14 @@ export namespace Prisma {
   export type ActiveMonitorUpdateendpointsInput = {
     set?: string[]
     push?: string | string[]
+  }
+
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
+  }
+
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -2240,6 +2424,28 @@ export namespace Prisma {
   export type NestedBoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -2320,6 +2526,34 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
 

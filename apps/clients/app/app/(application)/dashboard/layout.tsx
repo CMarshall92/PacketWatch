@@ -8,8 +8,6 @@ import {
 import { NavigationUserDropdown } from '@/shared/components/custom/UserDropdown'
 import { SideNavigation } from '@/shared/components/custom/SideNavigation'
 import { SiteSelector } from '@/shared/components/custom/SiteSelector'
-import { OnboardingSteps } from '@/shared/components/custom/OnboardingSteps'
-import { useSiteSelector } from '@/shared/stores/useSiteSelector'
 
 export const metadata: Metadata = {
 	title: 'PacketWatch - Dashboard',

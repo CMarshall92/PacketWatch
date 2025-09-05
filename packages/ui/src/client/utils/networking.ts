@@ -43,6 +43,6 @@ export async function fetcher<T = any>(
 
   return {
     status: response.status,
-    data,
+    data: data.data,
   } as NetworkResponse<T>;
 }

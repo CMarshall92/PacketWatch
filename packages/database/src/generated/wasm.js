@@ -125,11 +125,15 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 exports.Prisma.ActiveMonitorScalarFieldEnum = {
   id: 'id',
   slug: 'slug',
+  label: 'label',
   userId: 'userId',
   icon: 'icon',
   serviceUrl: 'serviceUrl',
   isApi: 'isApi',
-  endpoints: 'endpoints'
+  endpoints: 'endpoints',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  lastSelectedAt: 'lastSelectedAt'
 };
 
 exports.Prisma.SortOrder = {

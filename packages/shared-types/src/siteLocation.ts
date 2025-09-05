@@ -7,6 +7,6 @@ export interface SiteLocation {
 }
 
 export interface SiteLocationResponse {
-  data: SiteLocation[];
-  prevSelectedSlug: string;
+  locations: SiteLocation[];
+  selected: string;
 }

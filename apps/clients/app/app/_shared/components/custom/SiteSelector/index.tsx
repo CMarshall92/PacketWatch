@@ -35,15 +35,20 @@ import { getDomainWithProtocol } from '../../../lib/utils/client'
 import { SiteLocation } from '@packetwatch/shared-types'
 import { useSession } from 'next-auth/react'
 import { useSiteSelector } from '@/shared/stores/useSiteSelector'
+import { SiteSelectorSkeleton } from './SiteSelectorSkeleton'
 
 export const SiteSelector = () => {
 	const { data: session } = useSession()
 	const [createOpen, setCreateOpen] = useState(false)
 	const [serviceUrl, setServiceUrl] = useState('')
+	const [serviceName, setServiceName] = useState('')
 	const [isApi, setIsApi] = useState(false)
 	const [endpoints, setEndpoints] = useState<string[]>([])
 
-	const { locations, selected, addLocation } = useSiteSelector()
+	const locations = useSiteSelector((state) => state.locations)
+	const locationsHaveFetched = useSiteSelector((state) => state.isFetched)
+	const selected = useSiteSelector((state) => state.selected)
+	const { addLocation } = useSiteSelector()
 
 	function addEndpoint() {
 		setEndpoints((prev) => ['', ...prev])
@@ -69,7 +74,9 @@ export const SiteSelector = () => {
 					userId: session?.user.id || null,
 					serviceUrl: getDomainWithProtocol(serviceUrl),
 					...(isApi ? { endpoints: endpoints.filter(Boolean) } : {}),
+					label: serviceName,
 					isApi,
+					icon: 'https://www.iconarchive.com/download/i103471/paomedia/small-n-flat/sign-check.512.png',
 				},
 			},
 			() => {
@@ -81,11 +88,28 @@ export const SiteSelector = () => {
 		addLocation(response.data)
 	}
 
+	const handleSelected = async (selectedSlug: string) => {
+		const response = await clientFetcher(
+			`${process.env.NEXT_PUBLIC_API_BASEURL}/monitors/select`,
+			{
+				method: 'POST',
+				body: {
+					userId: session?.user?.id,
+					slug: selectedSlug,
+				},
+			}
+		)
+
+		console.log(response.data)
+	}
+
 	const selectedSite = locations?.find(
 		(location: SiteLocation) => location.slug === selected
 	)
 
-	return (
+	return !locationsHaveFetched 
+	? <SiteSelectorSkeleton /> 
+	: (
 		<>
 			<DropdownMenu>
 				<DropdownMenuTrigger asChild>
@@ -107,7 +131,10 @@ export const SiteSelector = () => {
 				</DropdownMenuTrigger>
 				<DropdownMenuContent align="start" className="w-56">
 					{locations.map((location: SiteLocation) => (
-						<DropdownMenuItem key={location.slug}>
+						<DropdownMenuItem
+							onClick={async () => await handleSelected(location.slug)}
+							key={location.slug}
+						>
 							<React.Fragment>
 								{location.isApi ? <Network /> : <ChevronsLeftRightEllipsis />}
 								<span>{location.label}</span>
@@ -135,6 +162,18 @@ export const SiteSelector = () => {
 					</DialogHeader>
 
 					<div className="space-y-4">
+						<div className="space-y-2">
+							<Label htmlFor="service-name">Service Name</Label>
+							<Input
+								id="service-name"
+								placeholder="Google.com"
+								value={serviceName}
+								onChange={(e) => {
+									setServiceName(e.target.value)
+								}}
+							/>
+						</div>
+
 						<div className="space-y-2">
 							<Label htmlFor="service-url">Service Base URL</Label>
 							<Input

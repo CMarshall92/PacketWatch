@@ -3,14 +3,25 @@ import { create } from 'zustand'
 
 interface SiteSelectorState {
 	locations: SiteLocation[]
-	selected: string
 	addLocations: (newLocations?: SiteLocation[]) => void
 	addLocation: (newLocation?: SiteLocation) => void
+	selected: string
+	setSelectedLocation: (locationSlug?: string) => void
+	isFetched: boolean
+	toggleIsFetched: () => void
 }
 
 export const useSiteSelector = create<SiteSelectorState>((set) => ({
 	locations: [],
 	selected: '',
+	isFetched: false,
+	toggleIsFetched: () => {
+		set((state) => ({ isFetched: !state.isFetched }))
+	},
+	setSelectedLocation: (locationSlug?: string) => {
+		if (!locationSlug) return
+		set(() => ({ selected: locationSlug }))
+	},
 	addLocations: (newLocations?: SiteLocation[]) => {
 		if (!newLocations) return
 		set(({ locations }) => ({ locations: [...locations, ...newLocations] }))
