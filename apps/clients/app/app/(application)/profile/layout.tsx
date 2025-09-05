@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { SidebarInset, SidebarProvider } from '@/shared/components/ui/sidebar'
 import { SideNavigation } from '@/shared/components/custom/SideNavigation'
 import { PageHeader } from '@/shared/components/custom/PageHeader'
+import { TopNavigationContainer } from '@/shared/components/custom/TopNavigationContainer'
 
 export const metadata: Metadata = {
 	title: 'PacketWatch - Profile',
@@ -29,12 +30,12 @@ export default async function Layout({
 		<SidebarProvider>
 			<SideNavigation sections={sections} />
 			<SidebarInset>
-				<PageHeader title="Profile" />
-
-				<main className="flex-1 p-4 md:p-6 lg:p-8 scroll-smooth space-y-6">
+				<TopNavigationContainer
+					navigationChildren={<PageHeader title="Profile" />}
+				>
 					{children}
-				</main>
-			</SidebarInset>DISCORD_CLIENT_SECRET
+				</TopNavigationContainer>
+			</SidebarInset>
 		</SidebarProvider>
 	)
 }
